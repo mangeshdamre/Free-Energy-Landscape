@@ -8,7 +8,7 @@ where __*k<sub>B</sub>*__ and __*T*__ are the Boltzmann constant and absolute te
 
 From MD simulation, we can get calculate data, lets assume PC1 and PC2.
 How to calculate PCA from Gromacs MD?
-'''sh
+```sh
 gmx anaeig -f mdfit.xtc -s md.gro -v eigenvectors.trr -last 1 -proj pc1.xvg
 gmx anaeig -f mdfit.xtc -s md.gro -v eigenvectors.trr -frist 2 -last 2 -proj pc2.xvg
-'''
+```
