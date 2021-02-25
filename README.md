@@ -25,3 +25,7 @@ paste pc1.xvg pc2.xvg  | awk '{print $1, $2, $4}' > PC1PC2.xvg
 ```sh
 gmx sham -f PC1PC2.xvg -ls FES.xpm
 ```
+5. Convert .xpm file to .dat file
+```sh
+python2.7 xpm2txt.py -f FES.xpm -o free-energy-landscape.dat
+```
