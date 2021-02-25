@@ -12,7 +12,7 @@ How to calculate PCA from Gromacs MD?
 ```sh
 gmx covar -s md.gro -f mdfit.xtc -o eigenvalues.xvg -v eigenvectors.trr -xpma covapic.xpm
 ```
-2.  
+2. Calculate PC1 and PC2
 ```sh
 gmx anaeig -f md.xtc -s md.gro -v eigenvectors.trr -last 1 -proj pc1.xvg
 gmx anaeig -f md.xtc -s md.gro -v eigenvectors.trr -frist 2 -last 2 -proj pc2.xvg
