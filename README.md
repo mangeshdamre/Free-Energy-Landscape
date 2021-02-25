@@ -1,4 +1,4 @@
-# Free-Energy-Plots
+# Free-Energy-Landscape (FEL)
 
 The free energy landscapes are very useful to interprete and analyse the biomolecular processes such as molecular folding, aggreagation and recognition. Molecule's free energy landscape can be calculated by the following formula
 \
@@ -54,3 +54,4 @@ set yrange [B_min_y:B_max_y]
 sp 'free-energy-landscape.dat' u 1:2:3 w l
 EOL
 ```
+[!image]{https://github.com/mangeshdamre/Free-Energy-Plots/blob/main/Images/FEL.png}
