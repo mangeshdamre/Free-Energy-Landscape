@@ -47,6 +47,7 @@ set view map scale 1
 unset surface
 set dgrid3d 50,50
 set hidden3d
+set contour s
 stats 'free-energy-landscape.dat' u 1:(column(2)) name "A"
 stats 'free-energy-landscape.dat' u 1:(column(2)) name "B"
 set xrange [A_min_y:A_max_y]
