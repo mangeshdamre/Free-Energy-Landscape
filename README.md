@@ -8,7 +8,20 @@ where __*k<sub>B</sub>*__ and __*T*__ are the Boltzmann constant and absolute te
 
 From MD simulation, we can get calculate data, lets assume PC1 and PC2.
 How to calculate PCA from Gromacs MD?
+1. Calculate covariance matrix and calculate the eigenvectors and eigenvalues.
 ```sh
-gmx anaeig -f mdfit.xtc -s md.gro -v eigenvectors.trr -last 1 -proj pc1.xvg
-gmx anaeig -f mdfit.xtc -s md.gro -v eigenvectors.trr -frist 2 -last 2 -proj pc2.xvg
+gmx covar -s md.gro -f mdfit.xtc -o eigenvalues.xvg -v eigenvectors.trr -xpma covapic.xpm
+```
+2.  
+```sh
+gmx anaeig -f md.xtc -s md.gro -v eigenvectors.trr -last 1 -proj pc1.xvg
+gmx anaeig -f md.xtc -s md.gro -v eigenvectors.trr -frist 2 -last 2 -proj pc2.xvg
+```
+3. Concatenate PC1 and PC2 in one file.
+```sh
+paste pc1.xvg pc2.xvg  | awk '{print $1, $2, $4}' > PC1PC2.xvg
+```
+4. Calculate Gibbs Free Energy.
+```sh
+gmx sham -f PC1PC2.xvg -ls FES.xpm
 ```
