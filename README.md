@@ -54,4 +54,6 @@ set yrange [B_min_y:B_max_y]
 sp 'free-energy-landscape.dat' u 1:2:3 w l
 EOL
 ```
-[!image]{https://github.com/mangeshdamre/Free-Energy-Plots/blob/main/Images/FEL.png}
+<p float="center">
+  <img src="https://github.com/mangeshdamre/Free-Energy-Plots/blob/main/Images/FEL.png" width="512" />
+</p>
