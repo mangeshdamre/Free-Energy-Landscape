@@ -33,20 +33,24 @@ python2.7 xpm2txt.py -f FES.xpm -o free-energy-landscape.dat
 ```sh
 gnuplot <<EOL
 reset
-set terminal pngcairo  background "#ffffff" enhanced font "Times-New-Roman-Bold,20" fontscale 1.0 size 1280, 720 
+set terminal pngcairo  background "#ffffff" enhanced font "Times-New-Roman-Bold,20" fontscale 1.0 size 720, 720 
 set key on b c outside horizontal
 set output 'FEL.png'
 set title "Free Energy Landscape"
-set xlabel "PC1 (\305)" rotate parallel
-set ylabel "PC2 (\305)" rotate parallel
+set xlabel "PC1" rotate parallel
+set ylabel "PC2" rotate parallel
 set zlabel "Gibbs Free Energy" rotate parallel
 set grid
 unset key
 set pm3d implicit at b
 set view map scale 1
 unset surface
-set dgrid3d $d1,$d2
+set dgrid3d 50,50
 set hidden3d
+stats 'free-energy-landscape.dat' u 1:(column(2)) name "A"
+stats 'free-energy-landscape.dat' u 1:(column(2)) name "B"
+set xrange [A_min_y:A_max_y]
+set yrange [B_min_y:B_max_y]
 sp 'free-energy-landscape.dat' u 1:2:3 w l
 EOL
 ```
