@@ -30,22 +30,23 @@ gmx sham -f PC1PC2.xvg -ls FES.xpm
 python2.7 xpm2txt.py -f FES.xpm -o free-energy-landscape.dat
 ```
 7. Plot FEL
-```py
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-# Read file
-data=pd.read_csv( 'free-energy-landscape.dat' ,sep = '\t' ,header = None )
-fesvalue=np.array(data[ 2 ])
-# Because the default is 32*32=1024, it is rounded to 32*32 grid points, and the horizontal and vertical coordinates can be discarded, because they are sequential and have little meaning.
-plotvalue=np.reshape(test,( 32 , -1 )
-# Drawing
-plt.figure(figsize=( 8 , 8 ))
-plt.imshow(newtest,cmap = 'jet' ,interpolation = 'bilinear' )
-plt.xticks([],[])
-plt.yticks([],[])
-plt.xlabel( 'PC1' ,fontsize = 16 )
-plt.ylabel( 'PC2' ,fontsize = 16 )
-#plt.show()
-plt.savefig( 'fel.png' ,dpi = 600 )
+```sh
+gnuplot <<EOL
+reset
+set terminal pngcairo  background "#ffffff" enhanced font "Times-New-Roman-Bold,20" fontscale 1.0 size 1280, 720 
+set key on b c outside horizontal
+set output 'FEL.png'
+set title "Free Energy Landscape"
+set xlabel "PC1 (\305)" rotate parallel
+set ylabel "PC2 (\305)" rotate parallel
+set zlabel "Gibbs Free Energy" rotate parallel
+set grid
+unset key
+set pm3d implicit at b
+set view map scale 1
+unset surface
+set dgrid3d $d1,$d2
+set hidden3d
+sp 'free-energy-landscape.dat' u 1:2:3 w l
+EOL
 ```
