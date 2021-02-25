@@ -1,5 +1,7 @@
 # Free-Energy-Landscape (FEL)
-
+<p float="center">
+  <img src="https://github.com/mangeshdamre/Free-Energy-Plots/blob/main/Images/FEL.png" width="512" />
+</p>
 The free energy landscapes are very useful to interprete and analyse the biomolecular processes such as molecular folding, aggreagation and recognition. Molecule's free energy landscape can be calculated by the following formula
 \
 <img src="https://render.githubusercontent.com/render/math?math=\Delta G=-k_BTlnP(CV_1,CV2)"> 
